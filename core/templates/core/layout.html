@@ -1,0 +1,37 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">    
+    <script src="{%static 'core/js/script.js'%}"> </script>
+    <title>Airline-Reservation</title>
+  </head>
+  <body>
+    <nav>
+      <div class="navbar">
+        <div class="logo">MyBrand</div>
+        <div class="nav-links" id="navLinks">
+          <a href="#">Home</a>
+          <a href="#">About</a>
+          <a href="#">Services</a>
+          <a href="#">Portfolio</a>
+          <a href="#" class="cta">Contact</a>
+        </div>
+        <div class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+    <br><br><br>
+    <main>
+        
+        {%block content%} {%endblock%}
+
+    </main>
+  </body>
+</html>
