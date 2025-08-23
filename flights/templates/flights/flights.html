@@ -1,7 +1,21 @@
 {% extends "core/layout.html" %}
 
 {%block content%}
-    
 
 <h1>Flights</h1>
+    <form action="{%url 'flight' 0%}" method="get">      <!-- 0 is just any number to call function/view flight which needs a number as an argument -->
+        <input type="number" name="flight-id" placeholder="Search">
+        <input type="submit">
+    </form>
+
+    <ul>
+        {%for flight in flights%}
+            <a href='{%url "flight" flight.flightId %}'>
+                <li>{{flight}}</li>
+            </a>
+            {%empty%}
+                <div style="color: red; font-style:italic">NO Scheduled Flight</div>
+        {%endfor%}
+    </ul>
+
 {%endblock%}

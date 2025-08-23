@@ -29,6 +29,10 @@ class Flight(models.Model):
     arrivalTime = models.DateTimeField()
     aircraft = models.ForeignKey(Aircraft, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return f"{self.flightId} | {self.flightNo} {self.origin} to {self.destination} on {self.aircraft.tailNo}"
+
+
 
 class Seat(models.Model):
     seatNo= models.CharField(max_length=4)

@@ -1,0 +1,11 @@
+{% extends "core/layout.html" %}
+
+
+{% block content %}
+    <h2>Flight {{flightInstance.flightNo}} ({{flightInstance.flightNo}})</h2>
+    <h4>From {{flightInstance.origin}} To {{flightInstance.destination}}</h3>
+    <div>Departure at {{flightInstance.departureTime}}</div>
+    <div>Landing at {{flightInstance.arrivalTime}}</div>
+    <div>Aircraft: {{flightInstance.aircraft}}</div>
+    <a href="{%url 'flights'%}">Back</a>
+{% endblock %}
