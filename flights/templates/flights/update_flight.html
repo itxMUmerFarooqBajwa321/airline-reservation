@@ -1,0 +1,10 @@
+{% extends "core/layout.html" %}
+
+{%block content%}
+    <h1>Add Flight</h1>
+    <form action="{%url 'updateFlight'%}" method="post">
+        {%csrf_token%}
+        {{myForm}}
+        <input type="submit">
+    </form>
+{%endblock%}

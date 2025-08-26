@@ -4,7 +4,7 @@
 
 <h1>Flights</h1>
     <form action="{%url 'flight' 0%}" method="get">      <!-- 0 is just any number to call function/view flight which needs a number as an argument -->
-        <input type="number" name="flight-id" placeholder="Search">
+        <input type="text" name="flight-id" placeholder="Search">
         <input type="submit">
     </form>
 
@@ -17,5 +17,5 @@
                 <div style="color: red; font-style:italic">NO Scheduled Flight</div>
         {%endfor%}
     </ul>
-
+    <a href='{%url "updateFlight"%}'>Add Flight</a>
 {%endblock%}

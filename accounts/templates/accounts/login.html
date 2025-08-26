@@ -1,0 +1,17 @@
+{% extends "core/layout.html" %}
+
+{%block content%}
+    <h2>Login Form</h2>
+    <form action="{%url 'loginUser'%}" method="post">
+        {%csrf_token%}
+        <input type="text" name="username" placeholder="Username">
+        <input type="password" name="password" placeholder="Password">
+        <input type="submit">
+    </form>
+    <a href="#">New User? </a>
+    {% comment %} {%if message%}
+        <h5 style="color: red; font:bolder">
+            {{message}}
+        </h5>
+    {%endif%} {% endcomment %}
+{% endblock %}
