@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Airport(models.Model):
@@ -43,5 +44,12 @@ class Seat(models.Model):
         FIRST_CLASS = 'F','FirstClass'        
     travelClass = models.CharField(max_length=1,choices=TravelClass.choices, default = TravelClass.ECONOMY)
     isBooked = models.BooleanField(default=False)
+    #passenger = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True , null=True)
     def __str__(self):
         return f"{self.seatNo} in {self.aircraft} | {self.travelClass} | Booked:{self.isBooked}"
+
+
+# class Booking(models.Model):
+#     user = models.ForeignKey(User , on_delete=models.CASCADE)
+#     flight = models.ForeignKey(Flight, on_delete=models.CASCADE)
+#     seat = models.ForeignKey(Seat, on_delete=models.CASCADE)

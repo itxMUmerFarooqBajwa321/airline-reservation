@@ -48,6 +48,37 @@ def createUser(request):
             })
     return render(request, 'accounts/register-user.html')
 
+def editProfile(request):
+    if request.method == 'POST':
+        username= request.POST['username']        
+        first = request.POST['first']
+        last = request.POST['last']
+        email = request.POST['email']
+        changeUsernameStatus = request.POST.get('change-username',False)
+        message={
+            'message':"Credientials changed successfully! "
+        }
+        if changeUsernameStatus:
+            if not User.objects.filter(username=username).exists():
+                request.user.username = username
+            else:
+                message = {
+                        'message':"Username already exists! "
+                    }
+        if message['message'] != "Username already exists! ":
+            request.user.first_name = first
+            request.user.last_name = last
+            request.user.email = email
+        request.user.save()
+        return render (request, 'accounts/profile-edit.html',message)
+    return render(request, 'accounts/profile-edit.html',{
+        'username':request.user.username,
+        'first':request.user.first_name,
+        'last':request.user.last_name,
+        'email':request.user.email,
+        })
+
+
 
 def user(request,user_name):
     if not User.objects.filter(username=user_name).exists():

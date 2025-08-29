@@ -1,0 +1,26 @@
+{% extends "core/layout.html" %}
+
+{%block content%}
+    <h2>Edit Profile</h2>
+    <form  method="post" action="{%url 'edit'%}">
+        {%csrf_token%}
+        <input id="username" type="text" name="username" placeholder="Username"> <br>
+        <input id='email' type="email"name="email" placeholder="Email"> <br>
+        <input id='first' type="text" name="first" placeholder="First Name"> <br>
+        <input id="last" type="text" name="last" placeholder="Last Name"> <br>
+        <input type="checkbox" name="change-username" > 
+        <label >Change Username?</label> <br>
+        <input type="submit" id="submit"> <br> 
+    </form>
+    {%if message%}
+        <div style="color:red; font:italic"> {{message}} </div>
+    {%endif%}
+    <script>
+        document.addEventListener('DOMContentLoaded',()=>{
+            document.querySelector('#username').value = "{{username}}";
+            document.querySelector('#first').value ="{{first}}";
+            document.querySelector('#last').value ="{{last}}"
+            document.querySelector('#email').value = "{{email}}"
+        });
+    </script>
+{%endblock%}

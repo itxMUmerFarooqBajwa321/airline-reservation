@@ -19,3 +19,16 @@ def book(request):
     return render (request, 'bookings/book.html',{
         'myForm':myForm
     })
+
+
+from django.shortcuts import get_object_or_404, redirect
+
+def book_seat(request, seat_id):
+    seat = get_object_or_404(Seat, id=seat_id)
+
+    if not seat.isBooked:  # only allow if free
+        #seat.passenger = request.user
+        seat.isBooked = True
+        seat.save() 
+
+    return HttpResponse("Booked!")  # or wherever you want to go
